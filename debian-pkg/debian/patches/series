@@ -16,3 +16,4 @@
 700000_docs_libdnf_Doxyfile.in_help-reproducible-builds.patch
 800000_libdnf_conf_ConfigMain.cpp_revert-9309e92332241ff1113433057c969cebf127734e-93a6b2d24433df040221de8423c621eedbdc6d4f.patch
 800100_libdnf_dnf-rpmts.cpp_revert-consequences-of-fail-safe-mechanism-af4874e2f190f9c6b45a57e660aa978855c5316e.patch
+000200_Older-RPM-doesn-t-have-RPMTAG_MODULARITYLABEL-define.patch

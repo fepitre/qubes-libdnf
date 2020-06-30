@@ -1,0 +1,28 @@
+From 21ce56ad133faaa8e40d68188fe897e613c4710f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Pierret=20=28fepitre=29?=
+ <frederic.pierret@qubes-os.org>
+Date: Fri, 19 Jun 2020 15:34:12 +0200
+Subject: [PATCH] Older RPM doesn't have RPMTAG_MODULARITYLABEL defined
+
+---
+ libdnf/dnf-rpmts.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/libdnf/dnf-rpmts.cpp b/libdnf/dnf-rpmts.cpp
+index 61bb1a2c..21286080 100644
+--- a/libdnf/dnf-rpmts.cpp
++++ b/libdnf/dnf-rpmts.cpp
+@@ -45,6 +45,10 @@
+ #include "utils/bgettext/bgettext-lib.h"
+ #include "dnf-package.h"
+ 
++// older RPM doesn't have RPMTAG_MODULARITYLABEL defined
++#ifndef RPMTAG_MODULARITYLABEL
++#define RPMTAG_MODULARITYLABEL 5096
++#endif
+ 
+ static gboolean
+ test_fail_safe(Header * hdr, DnfPackage * pkg, GError **error)
+-- 
+2.25.4
+
