@@ -1,0 +1,23 @@
+Description: gtk-doc: drop "html" topdir during installation.
+Author: Mihai Moldovan <ionic@ionic.de>
+
+gtk-doc already has specific topdirs for documentation types, so duplicating
+the type is useless (and harmful).
+
+cmake's install(DIRECTORY) function is a bit tricky in that it will copy a
+directory verbatim to the destionation path - including the last element. This
+can be avoided by specifying the source directory with a trailing slash, which
+will make the last component empty and hence let cmake install only data within
+the directory, but not the directory itself as the top dir.
+
+--- a/docs/libdnf/CMakeLists.txt
++++ b/docs/libdnf/CMakeLists.txt
+@@ -33,7 +33,7 @@ if(WITH_GTKDOC)
+         message(FATAL_ERROR "gtk-doc not found")
+     endif()
+ 
+-    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/html DESTINATION share/gtk-doc/html/libdnf)
++    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/html/ DESTINATION share/gtk-doc/html/libdnf)
+ endif()
+ 
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)

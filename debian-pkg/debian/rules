@@ -1,0 +1,56 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+# export DH_VERBOSE = 1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/default.mk
+
+%:
+	dh "${@}" --parallel --buildsystem=cmake --with=python3
+
+override_dh_auto_configure:
+	dh_auto_configure --builddirectory=build -- -DWITH_BINDINGS:BOOL=ON -DWITH_GTKDOC:BOOL=ON \
+                                                    -DWITH_HTML:BOOL=ON -DWITH_MAN:BOOL=ON \
+                                                    -DENABLE_RHSM_SUPPORT:BOOL=OFF -DENABLE_SOLV_URPMREORDER:BOOL=OFF \
+                                                    -DDISABLE_VALGRIND:BOOL=ON \
+                                                    -DPYTHON_DESIRED:STRING=3 -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
+                                                    -DLIB:STRING="lib/$(shell dpkg-architecture -qDEB_BUILD_MULTIARCH)"
+	if dpkg --compare-versions "$$(dpkg-query -f='$${Version}' --show 'libsmartcols-dev')" 'ge' '2.30'; then \
+		sed -i -e '/^@LIBSMARTCOLS_COMPAT@/s/^@LIBSMARTCOLS_COMPAT@/\/\//' 'libdnf/utils/smartcols/Cell.hpp'; \
+	else \
+		sed -i -e '/^@LIBSMARTCOLS_COMPAT@/s/^@LIBSMARTCOLS_COMPAT@//' 'libdnf/utils/smartcols/Cell.hpp'; \
+	fi
+
+override_dh_auto_build:
+	dh_auto_build --builddirectory=build -- all doc-html doc-gtk doc
+
+override_dh_auto_install:
+	dh_auto_install --builddirectory=build
+	# Remove doctree files (redundant, conflicts with reproducible builds)
+	rm -rfv 'build/docs/hawkey/html/.doctrees'
+	# Use system-provides files.
+	rm -fv 'build/docs/hawkey/html/_static/jquery.js' 'build/docs/hawkey/html/_static/underscore.js'
+
+override_dh_auto_clean:
+	rm -f 'libdnf/dnf-version.h'
+	dh_auto_clean --builddirectory=build
+
+override_dh_auto_test:
+	mkdir '$(CURDIR)/debian/tests-home'
+	HOME='$(CURDIR)/debian/tests-home' dh_auto_test --builddirectory=build -- ARGS='-V'
+
+override_dh_missing:
+	dh_missing --fail-missing
+
+override_dh_install:
+	if dpkg --compare-versions "$$(dpkg-query -f='$${Version}' --show 'debhelper')" 'ge' '12'; then \
+		dh_install; \
+	else \
+		dh_install --fail-missing ; \
+	fi
+
+override_dh_installchangelogs:
+	# Do not try to install a history directory within docs.
+	dh_installchangelogs -Xhistory

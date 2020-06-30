@@ -1,0 +1,3 @@
+version=4
+opts=filenamemangle=s/.+\/(?:v|libdnf\-)?(\d\S+)\.tar\.gz/libdnf-$1\.tar\.gz/ \
+  https://github.com/rpm-software-management/libdnf/releases .*/(?:v|libdnf\-)?(\d\S+)\.tar\.gz

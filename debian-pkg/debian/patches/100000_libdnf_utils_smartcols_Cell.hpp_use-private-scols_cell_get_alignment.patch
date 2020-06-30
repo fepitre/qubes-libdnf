@@ -1,0 +1,25 @@
+Description: Use private scols_cell_get_alignment() with older libsmartcols
+Author: Mihai Moldovan <ionic@ionic.de>
+
+Stretch's version of libsmartcols includes the (binary) symbol, but does not
+export it via its API, probably to make the intermediate release
+API-compatible.
+
+libdnf needs it, so we'll just declare the function and hope that linking will
+be able to pick it up just fine.
+
+For newer versions, that should just turn into a comment.
+
+--- a/libdnf/utils/smartcols/Cell.hpp
++++ b/libdnf/utils/smartcols/Cell.hpp
+@@ -26,6 +26,10 @@
+ #include <string>
+ #include <stdexcept>
+ 
++extern "C" {
++@LIBSMARTCOLS_COMPAT@ extern int scols_cell_get_alignment(const struct libscols_cell *ce);
++}
++
+ class Cell
+ {
+ public:

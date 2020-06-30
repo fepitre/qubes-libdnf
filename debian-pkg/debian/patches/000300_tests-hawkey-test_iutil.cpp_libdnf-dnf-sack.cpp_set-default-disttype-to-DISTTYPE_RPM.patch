@@ -1,0 +1,33 @@
+Description: Set the default disttype to RPM.
+Author: Mihai Moldovan <ionic@ionic.de>
+
+On "foreign" systems, including Debian, libsolv tries to be smart and default
+to the native packaging system type. We need to explicitly override it to use
+RPM for dnf to work.
+
+--- a/libdnf/dnf-sack.cpp
++++ b/libdnf/dnf-sack.cpp
+@@ -183,6 +183,7 @@ dnf_sack_init(DnfSack *sack)
+ {
+     DnfSackPrivate *priv = GET_PRIVATE(sack);
+     priv->pool = pool_create();
++    pool_setdisttype(priv->pool, DISTTYPE_RPM);
+     priv->running_kernel_id = -1;
+     priv->running_kernel_fn = running_kernel;
+     priv->considered_uptodate = TRUE;
+--- a/tests/hawkey/test_iutil.cpp
++++ b/tests/hawkey/test_iutil.cpp
+@@ -150,6 +150,13 @@ END_TEST
+ START_TEST(test_version_split)
+ {
+     Pool *pool = pool_create();
++
++    /*
++     * On "foreign" systems, the disttype will
++     * not default to RPM. Set this explicitly.
++     */
++    fail_if(-1 == pool_setdisttype(pool, DISTTYPE_RPM));
++
+     char evr[] = "1:5.9.3-8";
+     char *epoch, *version, *release;
+ 

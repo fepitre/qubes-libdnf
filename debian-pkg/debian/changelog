@@ -1,0 +1,156 @@
+libdnf (0.35.3-1) unstable; urgency=medium
+
+  [ Mihai Moldovan ]
+  * New upstream release.
+  * debian/control:
+    + Bump cmake dependency to 2.8.5-1~.
+    + Update to standards version 4.4.0.1. No changes necessary.
+    + Fix dependencies, it's libsolv*-dev, not libsolv*-devel.
+    + Add libgpgme-dev build dependency.
+    + Add libssl-dev build dependency.
+    + Add versioned dependency to libglib2.0-dev for >= 2.50.3-2.1~.
+    + Add libjson-c-dev build dependency.
+    + Add versioned build dependency on libmodulemd1-dev >= 1.6.1-1~. Needs
+      porting/packaging...
+    + Add libsmartcols-dev build dependency, >= 2.29.2-1+deb9u1.1~.
+    + Add libsqlite3-dev build dependency.
+    + Add valgrind build dependency.
+    + Add swig build dependency.
+    + Add libcppunit-dev build dependency.
+    + Update libsolv dependencies to >= 0.6.36~.
+    + Add doxygen build dependency.
+    + Drop old Python{,3}-Version fields. The base python packages are new
+      enough.
+    + Drop Python 2 binpkgs.
+    + Add python3-breathe build dependency.
+    + Add rpm-common build and run-time dependency. Test cases need rpmrc.
+    + Upgrade version on rpm dependencies to >= 4.14.2.1+dfsg1-1.1~.
+    + Upgrade version on librepo dependency to >= 1.10.0-1~.
+    + Add gettext build dependency.
+    + Add new packages for python3-libdnf.
+    + Let python3-hawkey depend upon python3-libdnf.
+    + Remove gir1.2-libdnf-1.0.
+    + Stop depending on gir1.2-libdnf-1.0 in libdnf-dev.
+    + Let libdnf-def break previous gir1.2-libdnf-1.0 versions.
+    + Remove gobject-introspection build dependency.
+    + Remove libgirpository1.0-dev build dependency.
+    + Make libdnf1 a transitional package.
+    + Add new binpkg libdnf2.
+    + Make libdnf1 a transitional package, depending on libdnf2.
+    + Change libdnf-dev's dependency from libdnf1 to libdnf2.
+    + Add new binpkg libdnf2-common.
+    + Let libdnf2 depend upon libdnf2-common.
+    + Switch versioned run-time dependencies to ${source:Version} if dependency
+      is arch:all.
+    + Change python3-{hawkey,libdnf}'s dependency from libdnf1 to libdnf2.
+    + Add Multi-Arch tags to binpkgs.
+    + Reorder run-time dependencies.
+    + Add Vcs-{Browser,Git} tags.
+  * debian/copyright:
+    + Update.
+  * debian/patches:
+    + Refresh.
+    + Add 800000_libdnf_conf_ConfigMain.cpp_revert-
+          9309e92332241ff1113433057c969cebf127734e-
+          93a6b2d24433df040221de8423c621eedbdc6d4f.patch applied to the Fedora
+      rawhide package to not always use the best solution/version for
+      better compatibility.
+    + Add 800100_libdnf_dnf-rpmts.cpp_revert-consequences-of-fail-safe-
+          mechanism-af4874e2f190f9c6b45a57e660aa978855c5316e.patch applied to
+      the Fedora rawhide package to not let actions fails if a modular package
+      doesn't have modular metadata - likewise for better compatibility.
+    + Add 100000_libdnf_utils_smartcols_Cell.hpp_use-private-
+          scols_cell_get_alignment.patch to be able to use the private
+      smartcols symbol from older util-linux packages. Goes with a change to
+      debian/rules.
+    + Add 000600_docs_libdnf_CMakeLists.txt_force-target-order.patch to force
+      a specific target ordering when generating docs using gtk-doc.
+    + Add
+      000900_docs_libdnf_CMakeLists.txt_drop-html-topdir-when-installing.patch
+      to not create an erroneous "html" top directory in the
+      /usr/share/gtk-doc/html/libdnf directory.
+    + Add 700000_docs_libdnf_Doxyfile.in_help-reproducible-builds.patch for
+      making builds (really the documentation) more reproducible.
+  * debian/libdnf-doc.docs:
+    + Remove MAINTAINERS and NEWS, they are gone.
+    + Install html documentation.
+  * debian/rules:
+    + Add new cmake parameters.
+    + Don't run tests with valgrind. It would be nice to do so eventually, but
+      they are currently failing in a spectacular fashion, c.f.,
+      https://github.com/rpm-software-management/libdnf/issues/783 and
+      https://github.com/rpm-software-management/libdnf/issues/784 .
+      Note that the general test suite is still executed - only the broken
+      valgrind tests are disabled!
+    + During python3-build, also build the new doc targets (doxygen, gtkdoc).
+    + Do not use recursive rm when deleting libdnf/dnf-version.h.
+    + Make dh_missing fail on uninstalled files.
+    + Same for dh_install, but only when using dh < 12.
+    + Support older libsmartcols/util-linux versions by declaring the private
+      symbol or comment the declaration out if the dependency is new enough.
+    + Create temporary home directory for running test cases (and the enclosed
+      rpmdb) in debian directory and use during dh_auto_test.
+    + Remove LIB_INSTALL_DIR, it's not used any longer.
+    + Remove dh-gir usage.
+    + Fix dh_installchangelogs failure by excluding the (docs/)history
+      directory.
+    + Work around #841148 by renaming a file back to _module.
+    + Remove integrated copies of {jquery,underscore}.js.
+    + Drop Python 2 support.
+    + Quote $@ variable in dh call.
+  * debian/:
+    + Remove gir1.2-libdnf-1.0.install.
+    + Add python3-libdnf.{install,symbols}.
+    + Add libdnf2-common.install.
+    + Add libdnf-doc.links.
+    + Add libdnf-doc.install.
+    + Add libdnf1.lintian-overrides.
+    + Add python3-hawkey-doc.links.
+    + Add {libdnf,python3-hawkey}-doc.doc-base.
+    + Remove libdnf1.symbols.
+    + Add libdnf2.symbols.
+    + Add source/lintian-overrides.
+    + Add libdnf2.lintian-overrides.
+  * debian/libdnf-dev.install:
+    + Remove GIR path.
+  * debian/libdnf1.install:
+    + Remove GIR typelib entry.
+    + Add entry for usr/lib/*/libdnf/plugins/.
+  * debian/libdnf1.install:
+    + Rename to libdnf2.install.
+  * debian/python3-hawkey.symbols:
+    + Update.
+    + Add Build-Depends-Package tag mentioning libdnf-dev package.
+  * debian/libdnf2-common.install:
+    + Install locales.
+  * debian/libdnf-doc.links:
+    + Install gtk-doc symlink for libdnf.
+  * debian/libdnf-doc.install:
+    + Install gtk-doc data.
+  * debian/libdnf1.lintian-overrides:
+    + Silence outdated tag. oldlibs/optional is just fine.
+  * debian/python3-hawkey-doc.links:
+    + Replace {jquery,underscore}.js with system versions.
+  * debian/python3-hawkey-doc.docs:
+    + Adapt to new build directory.
+  * debian/libdnf-doc.doc-base:
+    + Register C interface documentation with doc-base.
+  * debian/python3-hawkey-doc.doc-base:
+    + Register Python interface documentation with doc-base.
+  * debian/source/lintian-overrides:
+    + Silence warning about an "empty" section. Debian wants to ignore the
+      existence of COPYING (and licensing) files, but I don't.
+  * debian/libdnf2.lintian-overrides:
+    + Silence warning about stray documentation file. The installed README file
+      actually describes the directory's usage, so that's fine.
+  * debian/libdnf2.symbols:
+    + Populate.
+    + Add Build-Depends-Package tag mentioning libdnf-dev package.
+
+ -- Mihai Moldovan <ionic@ionic.de>  Thu, 12 Sep 2019 14:18:40 +0200
+
+libdnf (0.11.1-0x2go1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- X2Go Release Manager <git-admin@x2go.org>  Thu, 01 Feb 2018 05:31:07 +0100

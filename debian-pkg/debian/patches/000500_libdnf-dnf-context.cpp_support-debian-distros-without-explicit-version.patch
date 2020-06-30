@@ -1,0 +1,62 @@
+Description: Support Debian releases without explicit version.
+Author: Mihai Moldovan <ionic@ionic.de>
+
+On Debian, some series have no version. Most notably testing, unstable and
+experimental.
+
+We have to take this into account, because a missing VERSION_ID tag leads to
+test case failures (bad) and DNF context setup failures (much worse).
+
+Fake the version in such a case.
+
+--- a/libdnf/dnf-context.cpp
++++ b/libdnf/dnf-context.cpp
+@@ -1363,9 +1363,45 @@ dnf_context_set_os_release(DnfContext *c
+                                                  "os-release",
+                                                  "VERSION_ID",
+                                                  error);
+-    if (maybe_quoted_version == NULL)
+-        return FALSE;
+-    version = g_shell_unquote(maybe_quoted_version, error);
++    if (maybe_quoted_version == NULL) {
++        /*
++         * On Debian, some series have no version.
++         * Most notably testing, unstable and experimental.
++         *
++         * Fake the version in such a case.
++         * We do not really care a lot about this, since
++         * we're not using DNF in actual Debian contexts,
++         * but make sure that test cases do not fail.
++         */
++        g_autofree gchar *maybe_quoted_id = NULL;
++        maybe_quoted_id = g_key_file_get_string(key_file,
++                                                "os-release",
++                                                "ID",
++                                                error);
++        if (!maybe_quoted_id) {
++            return FALSE;
++        }
++
++        g_autofree gchar *id = g_shell_unquote(maybe_quoted_id, error);
++
++        if (0 != g_ascii_strncasecmp(id, "debian", strlen("debian"))) {
++            /* Better fail non-Debian plattforms... */
++            return FALSE;
++        }
++
++        /*
++         * Distinguishing testing and unstable via the os-release file(s)
++         * is not possible. Using lsb-release would work (as long as it
++         * exists), but requires additional parsing and is overkill.
++         * Just assign a fake version number that is higher than any
++         * existing one.
++         */
++        version = g_strdup("999");
++        g_clear_error(error);
++    }
++    else {
++        version = g_shell_unquote(maybe_quoted_version, error);
++    }
+     if (!version)
+         return FALSE;
+     dnf_context_set_release_ver(context, version);
