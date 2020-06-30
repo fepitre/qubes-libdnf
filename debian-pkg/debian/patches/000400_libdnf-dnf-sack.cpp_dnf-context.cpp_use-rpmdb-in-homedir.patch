@@ -1,0 +1,106 @@
+Description: Add rpmdb in home directory to checksum and DNF context setup function.
+Author: Mihai Moldovan <ionic@ionic.de>
+
+The rpm package on Debian is patched to always use the RPMDB in a user's home
+directory.
+
+Tell the checksumming and DNF context setup function to prefer the rpmdb in the
+user's home directory.
+
+--- a/libdnf/dnf-sack.cpp
++++ b/libdnf/dnf-sack.cpp
+@@ -226,7 +226,18 @@ dnf_sack_new(void)
+ static int
+ current_rpmdb_checksum(Pool *pool, unsigned char csout[CHKSUM_BYTES])
+ {
+-    const char *rpmdb_prefix_paths[] = { "/var/lib/rpm/Packages",
++    char *home_path = NULL;
++    gchar *home_dir = g_strdup(g_get_home_dir());
++
++    if (home_dir) {
++        home_path = g_strjoin(NULL, home_dir, "/.rpmdb/Packages", NULL);
++
++        g_free(home_dir);
++        home_dir = NULL;
++    }
++
++    const char *rpmdb_prefix_paths[] = { home_path,
++                                         "/var/lib/rpm/Packages",
+                                          "/usr/share/rpm/Packages" };
+     unsigned int i;
+     const char *fn;
+@@ -234,6 +245,10 @@ current_rpmdb_checksum(Pool *pool, unsig
+     int ret = 0;
+ 
+     for (i = 0; i < sizeof(rpmdb_prefix_paths)/sizeof(*rpmdb_prefix_paths); i++) {
++        if (!rpmdb_prefix_paths[i]) {
++            continue;
++        }
++
+         fn = pool_prepend_rootdir_tmp(pool, rpmdb_prefix_paths[i]);
+         fp_rpmdb = fopen(fn, "r");
+         if (fp_rpmdb)
+@@ -244,6 +259,10 @@ current_rpmdb_checksum(Pool *pool, unsig
+         ret = 1;
+     if (fp_rpmdb)
+         fclose(fp_rpmdb);
++
++    g_free(home_path);
++    home_path = NULL;
++
+     return ret;
+ }
+ 
+--- a/libdnf/dnf-utils.cpp
++++ b/libdnf/dnf-utils.cpp
+@@ -32,6 +32,8 @@
+ #include <errno.h>
+ #include <stdlib.h>
+ #include <glib/gstdio.h>
++#include <unistd.h>
++#include <pwd.h>
+ 
+ #include "dnf-types.h"
+ #include "dnf-utils.h"
+--- a/libdnf/dnf-context.cpp
++++ b/libdnf/dnf-context.cpp
+@@ -1912,12 +1912,33 @@ dnf_context_setup(DnfContext *context,
+ 
+     /* setup a file monitor on the rpmdb, if we're operating on the native / */
+     if (g_strcmp0(priv->install_root, "/") == 0) {
+-        rpmdb_path = g_build_filename(priv->install_root, "var/lib/rpm/Packages", NULL);
+-        file_rpmdb = g_file_new_for_path(rpmdb_path);
+-        priv->monitor_rpmdb = g_file_monitor_file(file_rpmdb,
+-                               G_FILE_MONITOR_NONE,
+-                               NULL,
+-                               error);
++        /* Try home directory first. */
++        gchar *home_dir = g_strdup(g_get_home_dir());
++
++        priv->monitor_rpmdb = NULL;
++
++        if (home_dir) {
++            rpmdb_path = g_build_filename(priv->install_root, home_dir, ".rpmdb/Packages", NULL);
++
++            g_free(home_dir);
++            home_dir = NULL;
++
++            file_rpmdb = g_file_new_for_path(rpmdb_path);
++            priv->monitor_rpmdb = g_file_monitor_file(file_rpmdb,
++                                   G_FILE_MONITOR_NONE,
++                                   NULL,
++                                   error);
++        }
++
++        if (!priv->monitor_rpmdb) {
++            rpmdb_path = g_build_filename(priv->install_root, "var/lib/rpm/Packages", NULL);
++            file_rpmdb = g_file_new_for_path(rpmdb_path);
++            priv->monitor_rpmdb = g_file_monitor_file(file_rpmdb,
++                                   G_FILE_MONITOR_NONE,
++                                   NULL,
++                                   error);
++        }
++
+         if (priv->monitor_rpmdb == NULL)
+             return FALSE;
+         g_signal_connect(priv->monitor_rpmdb, "changed",

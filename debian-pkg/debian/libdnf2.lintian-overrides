@@ -1,0 +1,2 @@
+# File actually describes the directory's purpose.
+libdnf2: package-contains-documentation-outside-usr-share-doc

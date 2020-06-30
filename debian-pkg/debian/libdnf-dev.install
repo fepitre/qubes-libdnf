@@ -1,0 +1,3 @@
+usr/include/libdnf
+usr/lib/*/libdnf.so
+usr/lib/*/pkgconfig/libdnf.pc

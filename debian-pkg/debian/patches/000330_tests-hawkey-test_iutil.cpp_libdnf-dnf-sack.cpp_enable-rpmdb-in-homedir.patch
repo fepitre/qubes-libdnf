@@ -1,0 +1,20 @@
+Description: Tell libsolv to prefer rpmdb in home directory.
+Author: Mihai Moldovan <ionic@ionic.de>
+
+The rpm package on Debian is patched to always use the RPMDB in a user's home
+directory. Libsolv is not patched in such a way. Since DNF is mixing librpm and
+libsolv, strange situations occur.
+
+Tell libsolv to prefer the rpmdb in the user's home directory.
+
+--- a/libdnf/dnf-sack.cpp
++++ b/libdnf/dnf-sack.cpp
+@@ -1715,7 +1715,7 @@ dnf_sack_load_system_repo(DnfSack *sack,
+             repoImpl->state_main = _HY_LOADED_CACHE;
+     } else {
+         g_debug("fetching rpmdb");
+-        int flagsrpm = REPO_REUSE_REPODATA | RPM_ADD_WITH_HDRID | REPO_USE_ROOTDIR;
++        int flagsrpm = REPO_REUSE_REPODATA | RPM_ADD_WITH_HDRID | REPO_USE_ROOTDIR | RPMDB_USE_HOMEDIR;
+         rc = repo_add_rpmdb_reffp(repo, cache_fp, flagsrpm);
+         if (!rc)
+             repoImpl->state_main = _HY_LOADED_FETCH;

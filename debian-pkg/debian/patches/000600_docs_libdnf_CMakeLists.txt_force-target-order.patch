@@ -1,0 +1,28 @@
+Description: Fix gtk-doc target order.
+Author: Mihai Moldovan <ionic@ionic.de>
+
+The gtk-doc commands have to be executed in a specified order. Some (probably
+older) cmake versions don't execute target dependencies in the provided order,
+but rather in parallel.
+
+Try to force a specific ordering by letting the sub-commands have dependencies
+as well.
+
+--- a/docs/libdnf/CMakeLists.txt
++++ b/docs/libdnf/CMakeLists.txt
+@@ -17,6 +17,7 @@ if(WITH_GTKDOC)
+             --output-format=xml
+             --module=libdnf
+             --source-dir=${CMAKE_SOURCE_DIR}/libdnf
++            DEPENDS doc-scan
+             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+         )
+ 
+@@ -24,6 +25,7 @@ if(WITH_GTKDOC)
+             COMMAND ${GTKDOC_MKHTML_EXE}
+             libdnf
+             ${CMAKE_SOURCE_DIR}/docs/libdnf/libdnf-docs.sgml
++            DEPENDS doc-mkdb
+             WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/html"
+         )
+         add_custom_target(doc-gtk DEPENDS doc-scan doc-mkdb doc-mkhtml)
