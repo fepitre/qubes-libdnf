@@ -1,5 +1,8 @@
-Description: Use private scols_cell_get_alignment() with older libsmartcols
-Author: Mihai Moldovan <ionic@ionic.de>
+From 004c043c931d10122ad2c4fe073f6920cd3c2970 Mon Sep 17 00:00:00 2001
+From: Mihai Moldovan <ionic@ionic.de>
+Date: Tue, 29 Sep 2020 18:30:16 +0200
+Subject: [PATCH] 
+ 100000_libdnf_utils_smartcols_Cell.hpp_use-private-scols_cell_get_alignment
 
 Stretch's version of libsmartcols includes the (binary) symbol, but does not
 export it via its API, probably to make the intermediate release
@@ -9,7 +12,12 @@ libdnf needs it, so we'll just declare the function and hope that linking will
 be able to pick it up just fine.
 
 For newer versions, that should just turn into a comment.
+---
+ libdnf/utils/smartcols/Cell.hpp | 4 ++++
+ 1 file changed, 4 insertions(+)
 
+diff --git a/libdnf/utils/smartcols/Cell.hpp b/libdnf/utils/smartcols/Cell.hpp
+index b90f0050..fc3c1d4a 100644
 --- a/libdnf/utils/smartcols/Cell.hpp
 +++ b/libdnf/utils/smartcols/Cell.hpp
 @@ -26,6 +26,10 @@
@@ -23,3 +31,6 @@ For newer versions, that should just turn into a comment.
  class Cell
  {
  public:
+-- 
+2.26.2
+

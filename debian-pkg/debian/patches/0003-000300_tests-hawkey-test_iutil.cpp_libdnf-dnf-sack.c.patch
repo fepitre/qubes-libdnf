@@ -1,20 +1,31 @@
-Description: Set the default disttype to RPM.
-Author: Mihai Moldovan <ionic@ionic.de>
+From 858f1ef41e7e6927b5e6308659f0f0cac965294c Mon Sep 17 00:00:00 2001
+From: Mihai Moldovan <ionic@ionic.de>
+Date: Tue, 29 Sep 2020 18:30:16 +0200
+Subject: [PATCH] 
+ 000300_tests-hawkey-test_iutil.cpp_libdnf-dnf-sack.cpp_set-default-disttype-to-DISTTYPE_RPM
 
 On "foreign" systems, including Debian, libsolv tries to be smart and default
 to the native packaging system type. We need to explicitly override it to use
 RPM for dnf to work.
+---
+ libdnf/dnf-sack.cpp         | 1 +
+ tests/hawkey/test_iutil.cpp | 7 +++++++
+ 2 files changed, 8 insertions(+)
 
+diff --git a/libdnf/dnf-sack.cpp b/libdnf/dnf-sack.cpp
+index 025988b4..cacf9fff 100644
 --- a/libdnf/dnf-sack.cpp
 +++ b/libdnf/dnf-sack.cpp
-@@ -183,6 +183,7 @@ dnf_sack_init(DnfSack *sack)
- {
+@@ -185,6 +185,7 @@ dnf_sack_init(DnfSack *sack)
      DnfSackPrivate *priv = GET_PRIVATE(sack);
      priv->pool = pool_create();
+     pool_set_flag(priv->pool, POOL_FLAG_WHATPROVIDESWITHDISABLED, 1);
 +    pool_setdisttype(priv->pool, DISTTYPE_RPM);
      priv->running_kernel_id = -1;
      priv->running_kernel_fn = running_kernel;
      priv->considered_uptodate = TRUE;
+diff --git a/tests/hawkey/test_iutil.cpp b/tests/hawkey/test_iutil.cpp
+index 8d00cc94..0ca12800 100644
 --- a/tests/hawkey/test_iutil.cpp
 +++ b/tests/hawkey/test_iutil.cpp
 @@ -150,6 +150,13 @@ END_TEST
@@ -31,3 +42,6 @@ RPM for dnf to work.
      char evr[] = "1:5.9.3-8";
      char *epoch, *version, *release;
  
+-- 
+2.26.2
+

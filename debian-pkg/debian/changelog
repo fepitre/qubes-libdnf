@@ -1,3 +1,10 @@
+libdnf (0.48.0-1) --release; urgency=medium
+
+  * Initial commit
+  * Update to version 0.48.0
+
+ -- Frédéric Pierret (fepitre) <user@localhost>  Sat, 10 Oct 2020 12:58:26 +0200
+
 libdnf (0.35.3-1) unstable; urgency=medium
 
   Initial commit
