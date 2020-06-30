@@ -1,0 +1,29 @@
+From 02f66db51a3e9e058721dfcaea714de20bdb6a4f Mon Sep 17 00:00:00 2001
+From: Mihai Moldovan <ionic@ionic.de>
+Date: Tue, 29 Sep 2020 18:30:16 +0200
+Subject: [PATCH] 
+ 000200_tests-hawkey-CMakeLists.txt_use-static-libcheck-and-add-LDFLAGS
+
+Within Debian, only the static libcheck library is shipped. Use it correctly,
+since the static library requires additional private libraries and definitions.
+---
+ tests/hawkey/CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/hawkey/CMakeLists.txt b/tests/hawkey/CMakeLists.txt
+index c2ca446a..b4acd57b 100644
+--- a/tests/hawkey/CMakeLists.txt
++++ b/tests/hawkey/CMakeLists.txt
+@@ -28,7 +28,8 @@ add_executable(test_hawkey_main ${hawkeytest_SRCS})
+ set_target_properties(test_hawkey_main PROPERTIES COMPILE_FLAGS -fPIC)
+ target_link_libraries(test_hawkey_main
+     libdnf
+-    ${CHECK_LIBRARIES}
++    ${CHECK_STATIC_LIBRARIES}
++    ${CHECK_STATIC_LDFLAGS}
+     ${SOLV_LIBRARY}
+     ${SOLVEXT_LIBRARY}
+     ${RPMDB_LIBRARY}
+-- 
+2.26.2
+

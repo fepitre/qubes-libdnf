@@ -1,0 +1,31 @@
+From af55ca7fb2193fce2dcdb36efb98c1993f2c7cdb Mon Sep 17 00:00:00 2001
+From: Mihai Moldovan <ionic@ionic.de>
+Date: Tue, 29 Sep 2020 18:30:16 +0200
+Subject: [PATCH] 
+ 000330_tests-hawkey-test_iutil.cpp_libdnf-dnf-sack.cpp_enable-rpmdb-in-homedir
+
+The rpm package on Debian is patched to always use the RPMDB in a user's home
+directory. Libsolv is not patched in such a way. Since DNF is mixing librpm and
+libsolv, strange situations occur.
+
+Tell libsolv to prefer the rpmdb in the user's home directory.
+---
+ libdnf/dnf-sack.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libdnf/dnf-sack.cpp b/libdnf/dnf-sack.cpp
+index 0162e04b..b12ee6df 100644
+--- a/libdnf/dnf-sack.cpp
++++ b/libdnf/dnf-sack.cpp
+@@ -1685,7 +1685,7 @@ dnf_sack_load_system_repo(DnfSack *sack, HyRepo a_hrepo, int flags, GError **err
+     repo = repo_create(pool, HY_SYSTEM_REPO_NAME);
+ 
+     g_debug("fetching rpmdb");
+-    int flagsrpm = REPO_REUSE_REPODATA | RPM_ADD_WITH_HDRID | REPO_USE_ROOTDIR;
++    int flagsrpm = REPO_REUSE_REPODATA | RPM_ADD_WITH_HDRID | REPO_USE_ROOTDIR | RPMDB_USE_HOMEDIR;
+     int rc = repo_add_rpmdb_reffp(repo, NULL, flagsrpm);
+     if (!rc) {
+         repoImpl->state_main = _HY_LOADED_FETCH;
+-- 
+2.26.2
+
