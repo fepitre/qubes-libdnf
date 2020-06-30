@@ -1,0 +1,26 @@
+From d0c07d97dba24d25e41d60e6688f2245522f17f3 Mon Sep 17 00:00:00 2001
+From: Mihai Moldovan <ionic@ionic.de>
+Date: Tue, 29 Sep 2020 18:30:16 +0200
+Subject: [PATCH] CMakeLists.txt: append libsolv cmake path
+
+Make sure cmake finds FindLibSolv.cmake installed
+in ${CMAKE_INSTALL_PREFIX}/share/cmake/libsolv.
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 40d64fc4..6c96caed 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,6 +46,7 @@ if(APPLE)
+     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH};/usr/local/share/cmake/Modules/)
+     include_directories(/usr/local/include)
+ endif()
++LIST (APPEND CMAKE_MODULE_PATH "${CMAKE_INSTALL_PREFIX}/share/cmake/libsolv/")
+ 
+ 
+ # build dependencies
+-- 
+2.26.2
+

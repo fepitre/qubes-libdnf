@@ -14,7 +14,7 @@ override_dh_auto_configure:
 	dh_auto_configure --builddirectory=build -- -DWITH_BINDINGS:BOOL=ON -DWITH_GTKDOC:BOOL=ON \
                                                     -DWITH_HTML:BOOL=ON -DWITH_MAN:BOOL=ON \
                                                     -DENABLE_RHSM_SUPPORT:BOOL=OFF -DENABLE_SOLV_URPMREORDER:BOOL=OFF \
-                                                    -DDISABLE_VALGRIND:BOOL=ON \
+                                                    -DDISABLE_VALGRIND:BOOL=ON -DWITH_ZCHUNK:BOOL=OFF\
                                                     -DPYTHON_DESIRED:STRING=3 -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
                                                     -DLIB:STRING="lib/$(shell dpkg-architecture -qDEB_BUILD_MULTIARCH)"
 	if dpkg --compare-versions "$$(dpkg-query -f='$${Version}' --show 'libsmartcols-dev')" 'ge' '2.30'; then \

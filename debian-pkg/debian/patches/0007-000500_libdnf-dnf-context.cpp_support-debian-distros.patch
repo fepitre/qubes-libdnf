@@ -1,5 +1,8 @@
-Description: Support Debian releases without explicit version.
-Author: Mihai Moldovan <ionic@ionic.de>
+From 82ce0991ec9a5ed0c256b1555b5f0da5aa0a0427 Mon Sep 17 00:00:00 2001
+From: Mihai Moldovan <ionic@ionic.de>
+Date: Tue, 29 Sep 2020 18:30:16 +0200
+Subject: [PATCH] 
+ 000500_libdnf-dnf-context.cpp_support-debian-distros-without-explicit-version
 
 On Debian, some series have no version. Most notably testing, unstable and
 experimental.
@@ -8,10 +11,15 @@ We have to take this into account, because a missing VERSION_ID tag leads to
 test case failures (bad) and DNF context setup failures (much worse).
 
 Fake the version in such a case.
+---
+ libdnf/dnf-context.cpp | 42 +++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 39 insertions(+), 3 deletions(-)
 
+diff --git a/libdnf/dnf-context.cpp b/libdnf/dnf-context.cpp
+index 32403fc2..a87c11ce 100644
 --- a/libdnf/dnf-context.cpp
 +++ b/libdnf/dnf-context.cpp
-@@ -1363,9 +1363,45 @@ dnf_context_set_os_release(DnfContext *c
+@@ -1631,9 +1631,45 @@ dnf_context_set_os_release(DnfContext *context, GError **error) try
                                                   "os-release",
                                                   "VERSION_ID",
                                                   error);
@@ -60,3 +68,6 @@ Fake the version in such a case.
      if (!version)
          return FALSE;
      dnf_context_set_release_ver(context, version);
+-- 
+2.26.2
+
