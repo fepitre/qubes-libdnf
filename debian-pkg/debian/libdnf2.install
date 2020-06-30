@@ -1,0 +1,3 @@
+usr/lib/*/libdnf.so.*
+usr/lib/*/libdnf/plugins/
+usr/share/man/

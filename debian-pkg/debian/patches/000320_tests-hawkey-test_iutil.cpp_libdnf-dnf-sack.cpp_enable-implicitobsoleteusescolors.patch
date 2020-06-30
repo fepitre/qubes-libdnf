@@ -1,0 +1,36 @@
+Description: Enable implicitobsoleteusescolors flag.
+Author: Mihai Moldovan <ionic@ionic.de>
+
+This flag is normally enabled by default in libsolv if compiled on Fedora or
+Mageia systems, but disabled for all others. Since we explicitly want to
+support Fedora (and CentOS/RHEL) repositories with DNF, enable this feature for
+correct resolution.
+
+--- a/libdnf/dnf-sack.cpp
++++ b/libdnf/dnf-sack.cpp
+@@ -184,6 +184,7 @@ dnf_sack_init(DnfSack *sack)
+     DnfSackPrivate *priv = GET_PRIVATE(sack);
+     priv->pool = pool_create();
+     pool_setdisttype(priv->pool, DISTTYPE_RPM);
++    pool_set_flag(priv->pool, POOL_FLAG_IMPLICITOBSOLETEUSESCOLORS, 1);
+     priv->running_kernel_id = -1;
+     priv->running_kernel_fn = running_kernel;
+     priv->considered_uptodate = TRUE;
+--- a/tests/hawkey/test_iutil.cpp
++++ b/tests/hawkey/test_iutil.cpp
+@@ -157,6 +157,15 @@ START_TEST(test_version_split)
+      */
+     fail_if(-1 == pool_setdisttype(pool, DISTTYPE_RPM));
+ 
++    /*
++     * On "foreign" systems, the implicitobsoleteusescolors
++     * flag is turned off by default.
++     * This leads to unexpected results when working with
++     * Fedora, Mageia or CentOS repositories, so enable it
++     * forcefully.
++     */
++    pool_set_flag(pool, POOL_FLAG_IMPLICITOBSOLETEUSESCOLORS, 1);
++
+     char evr[] = "1:5.9.3-8";
+     char *epoch, *version, *release;
+ 

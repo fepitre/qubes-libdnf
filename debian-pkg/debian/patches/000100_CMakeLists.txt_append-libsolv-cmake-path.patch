@@ -1,0 +1,16 @@
+Description: Append libsolv cmake path to CMAKE_MODULE_PATH.
+Author: Mihai Moldovan <ionic@ionic.de>
+
+On Debian, we install FindLibSolv.cmake in a private directory under lib. Make
+sure cmake finds this file.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,6 +41,7 @@ if(APPLE)
+     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH};/usr/local/share/cmake/Modules/)
+     include_directories(/usr/local/include)
+ endif()
++LIST (APPEND CMAKE_MODULE_PATH "${CMAKE_INSTALL_PREFIX}/${LIB}/cmake/libsolv/")
+ 
+ 
+ # build dependencies

@@ -1,0 +1,251 @@
+_hawkey.so python3-hawkey #MINVER#
+* Build-Depends-Package: libdnf-dev
+ HyExc_Arch@Base 0.11.1
+ HyExc_Exception@Base 0.11.1
+ HyExc_Query@Base 0.11.1
+ HyExc_Runtime@Base 0.11.1
+ HyExc_Validation@Base 0.11.1
+ HyExc_Value@Base 0.11.1
+ PyInit__hawkey@Base 0.11.1
+ _Z10new_reldepP7_objecti@Base 0.35.3
+ _Z11new_packageP7_objecti@Base 0.35.3
+ _Z11set_logfilePKcP8_IO_FILEb@Base 0.35.3
+ _Z12op_error2excPK7_GError@Base 0.35.3
+ _Z12package_hashP14_PackageObject@Base 0.35.3
+ _Z14log_level_namei@Base 0.35.3
+ _Z14repoToPyObjectPN6libdnf4RepoE@Base 0.35.3
+ _Z14sack_converterP7_objectPP8_DnfSack@Base 0.35.3
+ _Z15filter_internalPN6libdnf5QueryEPNS_8SelectorEP7_objectS5_S5_@Base 0.35.3
+ _Z15init_exceptionsv@Base 0.35.3
+ _Z15nevraToPyObjectPN6libdnf5NevraE@Base 0.35.3
+ _Z15nevra_converterP7_objectPPN6libdnf5NevraE@Base 0.35.3
+ _Z15nsvcapConverterP7_objectPPN6libdnf6NsvcapE@Base 0.35.3
+ _Z15queryToPyObjectPN6libdnf5QueryEP7_objectP11_typeobject@Base 0.35.3
+ _Z15query_converterP7_objectPPN6libdnf5QueryE@Base 0.35.3
+ _Z16nsvcapToPyObjectPN6libdnf6NsvcapE@Base 0.35.3
+ _Z16reldepToPyObjectPN6libdnf10DependencyE@Base 0.35.3
+ _Z16repoFromPyObjectP7_object@Base 0.35.3
+ _Z16sackFromPyObjectP7_object@Base 0.35.3
+ _Z17nevraFromPyObjectP7_object@Base 0.35.3
+ _Z17package_converterP7_objectPP11_DnfPackage@Base 0.35.3
+ _Z17queryFromPyObjectP7_object@Base 0.35.3
+ _Z17strlist_to_pylistPPKc@Base 0.35.3
+ _Z18SelectorToPyObjectPN6libdnf8SelectorEP7_object@Base 0.35.3
+ _Z18advisoryToPyObjectPN6libdnf8AdvisoryEP7_object@Base 0.35.3
+ _Z18nsvcapFromPyObjectP7_object@Base 0.35.3
+ _Z18reldepFromPyObjectP7_object@Base 0.35.3
+ _Z18selector_converterP7_objectPPN6libdnf8SelectorE@Base 0.35.3
+ _Z19packageFromPyObjectP7_object@Base 0.35.3
+ _Z19pySequenceConverterB5cxx11P7_object@Base 0.35.3
+ _Z19pyseq_to_packagesetP7_objectP8_DnfSack@Base 0.35.3
+ _Z19pyseq_to_reldeplistP7_objectP8_DnfSacki@Base 0.35.3
+ _Z20packageset_to_pylistPKN6libdnf10PackageSetEP7_object@Base 0.35.3
+ _Z20reldeplist_to_pylistPN6libdnf19DependencyContainerEP7_object@Base 0.35.3
+ _Z20strCpplist_to_pylistRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE@Base 0.35.3
+ _Z21advisorypkgToPyObjectPN6libdnf11AdvisoryPkgE@Base 0.35.3
+ _Z21advisoryrefToPyObjectPN6libdnf11AdvisoryRefEP7_object@Base 0.35.3
+ _Z21packagelist_to_pylistP10_GPtrArrayP7_object@Base 0.35.3
+ _Z22advisorylist_to_pylistPK10_GPtrArrayP7_object@Base 0.35.3
+ _Z22packageDeltaToPyObjectP16_DnfPackageDelta@Base 0.35.3
+ _Z23problemRulesPyConverterRSt6vectorIS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EESaIS7_EE@Base 0.35.3
+ _Z24changelogslist_to_pylistRKSt6vectorIN6libdnf9ChangelogESaIS1_EE@Base 0.35.3
+ _Z25advisoryPkgVectorToPylistRKSt6vectorIN6libdnf11AdvisoryPkgESaIS1_EE@Base 0.35.3
+ _Z25advisoryRefVectorToPylistRKSt6vectorIN6libdnf11AdvisoryRefESaIS1_EEP7_object@Base 0.35.3
+ _Z5ret2eiPKc@Base 0.35.3
+ _ZN12PycompStringC1EP7_object@Base 0.35.3
+ _ZN12PycompStringC2EP7_object@Base 0.35.3
+ _ZN17UniquePtrPyObject5resetEP7_object@Base 0.35.3
+ _ZN17UniquePtrPyObjectD1Ev@Base 0.35.3
+ _ZN17UniquePtrPyObjectD2Ev@Base 0.35.3
+ _ZN17UniquePtrPyObjectaSEOS_@Base 0.35.3
+ _ZN6libdnf10OptionBoolD0Ev@Base 0.35.3
+ _ZN6libdnf10OptionBoolD1Ev@Base 0.35.3
+ _ZN6libdnf10OptionBoolD2Ev@Base 0.35.3
+ _ZN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED0Ev@Base 0.35.3
+ _ZN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED1Ev@Base 0.35.3
+ _ZN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED2Ev@Base 0.35.3
+ _ZN6libdnf10OptionPathD0Ev@Base 0.35.3
+ _ZN6libdnf10OptionPathD1Ev@Base 0.35.3
+ _ZN6libdnf10OptionPathD2Ev@Base 0.35.3
+ _ZN6libdnf12OptionStringD0Ev@Base 0.35.3
+ _ZN6libdnf12OptionStringD1Ev@Base 0.35.3
+ _ZN6libdnf12OptionStringD2Ev@Base 0.35.3
+ _ZN6libdnf13OptionSecondsD0Ev@Base 0.35.3
+ _ZN6libdnf13OptionSecondsD1Ev@Base 0.35.3
+ _ZN6libdnf13OptionSecondsD2Ev@Base 0.35.3
+ _ZN6libdnf16OptionStringListD0Ev@Base 0.35.3
+ _ZN6libdnf16OptionStringListD1Ev@Base 0.35.3
+ _ZN6libdnf16OptionStringListD2Ev@Base 0.35.3
+ _ZNK6libdnf10OptionBool14getValueStringB5cxx11Ev@Base 0.35.3
+ _ZNK6libdnf10OptionBool5cloneEv@Base 0.35.3
+ _ZNK6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE14getValueStringEv@Base 0.35.3
+ _ZNK6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5cloneEv@Base 0.35.3
+ _ZNK6libdnf10OptionPath5cloneEv@Base 0.35.3
+ _ZNK6libdnf12OptionString14getValueStringB5cxx11Ev@Base 0.35.3
+ _ZNK6libdnf12OptionString5cloneEv@Base 0.35.3
+ _ZNK6libdnf13OptionSeconds5cloneEv@Base 0.35.3
+ _ZNK6libdnf16OptionStringList14getValueStringB5cxx11Ev@Base 0.35.3
+ _ZNK6libdnf16OptionStringList5cloneEv@Base 0.35.3
+ _ZNK6libdnf6Option11getPriorityEv@Base 0.35.3
+ _ZNK6libdnf6Option5emptyEv@Base 0.35.3
+ _ZNSt10unique_ptrIN6libdnf10PackageSetESt14default_deleteIS1_EED1Ev@Base 0.35.3
+ _ZNSt10unique_ptrIN6libdnf10PackageSetESt14default_deleteIS1_EED2Ev@Base 0.35.3
+ _ZNSt10unique_ptrIN6libdnf19DependencyContainerESt14default_deleteIS1_EED1Ev@Base 0.35.3
+ _ZNSt10unique_ptrIN6libdnf19DependencyContainerESt14default_deleteIS1_EED2Ev@Base 0.35.3
+ _ZNSt10unique_ptrIN6libdnf5QueryESt14default_deleteIS1_EED1Ev@Base 0.35.3
+ _ZNSt10unique_ptrIN6libdnf5QueryESt14default_deleteIS1_EED2Ev@Base 0.35.3
+ _ZNSt6vectorI7_HyFormSaIS0_EE12emplace_backIJS0_EEEvDpOT_@Base 0.35.3
+ _ZNSt6vectorI7_HyFormSaIS0_EE17_M_realloc_insertIJS0_EEEvN9__gnu_cxx17__normal_iteratorIPS0_S2_EEDpOT_@Base 0.35.3
+ _ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_insertIJS5_EEEvN9__gnu_cxx17__normal_iteratorIPS5_S7_EEDpOT_@Base 0.35.3
+ _ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED1Ev@Base 0.35.3
+ _ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev@Base 0.35.3
+ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_St20forward_iterator_tag@Base 0.35.3
+ _ZTIN6libdnf10OptionBoolE@Base 0.35.3
+ _ZTIN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEE@Base 0.35.3
+ _ZTIN6libdnf10OptionPathE@Base 0.35.3
+ _ZTIN6libdnf12OptionStringE@Base 0.35.3
+ _ZTIN6libdnf13OptionSecondsE@Base 0.35.3
+ _ZTIN6libdnf16OptionStringListE@Base 0.35.3
+ _ZTIN6libdnf23ModuleDefaultsContainer17ConflictExceptionE@Base 0.35.3
+ _ZTIN6libdnf23ModuleDefaultsContainer9ExceptionE@Base 0.35.3
+ _ZTIN6libdnf6OptionE@Base 0.35.3
+ _ZTSN6libdnf10OptionBoolE@Base 0.35.3
+ _ZTSN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEE@Base 0.35.3
+ _ZTSN6libdnf10OptionPathE@Base 0.35.3
+ _ZTSN6libdnf12OptionStringE@Base 0.35.3
+ _ZTSN6libdnf13OptionSecondsE@Base 0.35.3
+ _ZTSN6libdnf16OptionStringListE@Base 0.35.3
+ _ZTSN6libdnf23ModuleDefaultsContainer17ConflictExceptionE@Base 0.35.3
+ _ZTSN6libdnf23ModuleDefaultsContainer9ExceptionE@Base 0.35.3
+ _ZTSN6libdnf6OptionE@Base 0.35.3
+ _ZTVN6libdnf10OptionBoolE@Base 0.35.3
+ _ZTVN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEE@Base 0.35.3
+ _ZTVN6libdnf10OptionPathE@Base 0.35.3
+ _ZTVN6libdnf12OptionStringE@Base 0.35.3
+ _ZTVN6libdnf13OptionSecondsE@Base 0.35.3
+ _ZTVN6libdnf16OptionStringListE@Base 0.35.3
+ _ZTVN6libdnf6OptionE@Base 0.35.3
+#MISSING: 0.35.3# advisoryToPyObject@Base 0.11.1
+ advisory_Type@Base 0.11.1
+#MISSING: 0.35.3# advisorylist_to_pylist@Base 0.11.1
+#MISSING: 0.35.3# advisorypkgToPyObject@Base 0.11.1
+ advisorypkg_Type@Base 0.11.1
+#MISSING: 0.35.3# advisorypkglist_to_pylist@Base 0.11.1
+#MISSING: 0.35.3# advisoryrefToPyObject@Base 0.11.1
+ advisoryref_Type@Base 0.11.1
+#MISSING: 0.35.3# advisoryreflist_to_pylist@Base 0.11.1
+ goal_Type@Base 0.11.1
+#MISSING: 0.35.3# init_exceptions@Base 0.11.1
+#MISSING: 0.35.3# log_level_name@Base 0.11.1
+#MISSING: 0.35.3# moduleFormFromPyObject@Base 0.11.1
+#MISSING: 0.35.3# moduleFormToPyObject@Base 0.11.1
+#MISSING: 0.35.3# module_form_Type@Base 0.11.1
+#MISSING: 0.35.3# module_form_converter@Base 0.11.1
+#MISSING: 0.35.3# nevraFromPyObject@Base 0.11.1
+#MISSING: 0.35.3# nevraToPyObject@Base 0.11.1
+ nevra_Type@Base 0.11.1
+#MISSING: 0.35.3# nevra_converter@Base 0.11.1
+#MISSING: 0.35.3# new_package@Base 0.11.1
+#MISSING: 0.35.3# new_reldep@Base 0.11.1
+ nsvcap_Type@Base 0.35.3
+#MISSING: 0.35.3# op_error2exc@Base 0.11.1
+#MISSING: 0.35.3# packageDeltaToPyObject@Base 0.11.1
+ packageDelta_Type@Base 0.11.1
+#MISSING: 0.35.3# packageFromPyObject@Base 0.11.1
+ package_Type@Base 0.11.1
+#MISSING: 0.35.3# package_converter@Base 0.11.1
+#MISSING: 0.35.3# package_hash@Base 0.11.1
+#MISSING: 0.35.3# packagelist_to_pylist@Base 0.11.1
+#MISSING: 0.35.3# packageset_to_pylist@Base 0.11.1
+#MISSING: 0.35.3# possibilitiesToPyObject@Base 0.11.1
+#MISSING: 0.35.3# possibilities_Type@Base 0.11.1
+#MISSING: 0.35.3# pycomp_free_tmp_array@Base 0.11.1
+#MISSING: 0.35.3# pycomp_get_string@Base 0.11.1
+#MISSING: 0.35.3# pyseq_to_packageset@Base 0.11.1
+#MISSING: 0.35.3# pyseq_to_reldeplist@Base 0.11.1
+#MISSING: 0.35.3# queryFromPyObject@Base 0.11.1
+#MISSING: 0.35.3# queryToPyObject@Base 0.11.1
+ query_Type@Base 0.11.1
+#MISSING: 0.35.3# query_converter@Base 0.11.1
+ query_sequence@Base 0.35.3
+#MISSING: 0.35.3# reldepFromPyObject@Base 0.11.1
+#MISSING: 0.35.3# reldepToPyObject@Base 0.11.1
+ reldep_Type@Base 0.11.1
+#MISSING: 0.35.3# reldep_from_pystr@Base 0.11.1
+#MISSING: 0.35.3# reldeplist_to_pylist@Base 0.11.1
+#MISSING: 0.35.3# repoFromPyObject@Base 0.11.1
+#MISSING: 0.35.3# repoToPyObject@Base 0.11.1
+ repo_Type@Base 0.11.1
+#MISSING: 0.35.3# repo_converter@Base 0.11.1
+#MISSING: 0.35.3# ret2e@Base 0.11.1
+#MISSING: 0.35.3# sackFromPyObject@Base 0.11.1
+ sack_Type@Base 0.11.1
+#MISSING: 0.35.3# sack_converter@Base 0.11.1
+ sack_sequence@Base 0.11.1
+ selector_Type@Base 0.11.1
+#MISSING: 0.35.3# selector_converter@Base 0.11.1
+#MISSING: 0.35.3# set_logfile@Base 0.11.1
+#MISSING: 0.35.3# solutionToPyObject@Base 0.11.1
+#MISSING: 0.35.3# solution_Type@Base 0.11.1
+#MISSING: 0.35.3# solutionlist_to_pylist@Base 0.11.1
+#MISSING: 0.35.3# strlist_to_pylist@Base 0.11.1
+ subject_Type@Base 0.11.1
+_hawkey_test.so python3-hawkey #MINVER#
+* Build-Depends-Package: libdnf-dev
+ PyInit__hawkey_test@Base 0.11.1
+ _ZN6libdnf10OptionBoolD0Ev@Base 0.35.3
+ _ZN6libdnf10OptionBoolD1Ev@Base 0.35.3
+ _ZN6libdnf10OptionBoolD2Ev@Base 0.35.3
+ _ZN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED0Ev@Base 0.35.3
+ _ZN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED1Ev@Base 0.35.3
+ _ZN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED2Ev@Base 0.35.3
+ _ZN6libdnf10OptionPathD0Ev@Base 0.35.3
+ _ZN6libdnf10OptionPathD1Ev@Base 0.35.3
+ _ZN6libdnf10OptionPathD2Ev@Base 0.35.3
+ _ZN6libdnf12OptionStringD0Ev@Base 0.35.3
+ _ZN6libdnf12OptionStringD1Ev@Base 0.35.3
+ _ZN6libdnf12OptionStringD2Ev@Base 0.35.3
+ _ZN6libdnf13OptionSecondsD0Ev@Base 0.35.3
+ _ZN6libdnf13OptionSecondsD1Ev@Base 0.35.3
+ _ZN6libdnf13OptionSecondsD2Ev@Base 0.35.3
+ _ZN6libdnf16OptionStringListD0Ev@Base 0.35.3
+ _ZN6libdnf16OptionStringListD1Ev@Base 0.35.3
+ _ZN6libdnf16OptionStringListD2Ev@Base 0.35.3
+ _ZNK6libdnf10OptionBool14getValueStringB5cxx11Ev@Base 0.35.3
+ _ZNK6libdnf10OptionBool5cloneEv@Base 0.35.3
+ _ZNK6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE14getValueStringEv@Base 0.35.3
+ _ZNK6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE5cloneEv@Base 0.35.3
+ _ZNK6libdnf10OptionPath5cloneEv@Base 0.35.3
+ _ZNK6libdnf12OptionString14getValueStringB5cxx11Ev@Base 0.35.3
+ _ZNK6libdnf12OptionString5cloneEv@Base 0.35.3
+ _ZNK6libdnf13OptionSeconds5cloneEv@Base 0.35.3
+ _ZNK6libdnf16OptionStringList14getValueStringB5cxx11Ev@Base 0.35.3
+ _ZNK6libdnf16OptionStringList5cloneEv@Base 0.35.3
+ _ZNK6libdnf6Option11getPriorityEv@Base 0.35.3
+ _ZNK6libdnf6Option5emptyEv@Base 0.35.3
+ _ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED1Ev@Base 0.35.3
+ _ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev@Base 0.35.3
+ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_St20forward_iterator_tag@Base 0.35.3
+ _ZTIN6libdnf10OptionBoolE@Base 0.35.3
+ _ZTIN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEE@Base 0.35.3
+ _ZTIN6libdnf10OptionPathE@Base 0.35.3
+ _ZTIN6libdnf12OptionStringE@Base 0.35.3
+ _ZTIN6libdnf13OptionSecondsE@Base 0.35.3
+ _ZTIN6libdnf16OptionStringListE@Base 0.35.3
+ _ZTIN6libdnf6OptionE@Base 0.35.3
+ _ZTSN6libdnf10OptionBoolE@Base 0.35.3
+ _ZTSN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEE@Base 0.35.3
+ _ZTSN6libdnf10OptionPathE@Base 0.35.3
+ _ZTSN6libdnf12OptionStringE@Base 0.35.3
+ _ZTSN6libdnf13OptionSecondsE@Base 0.35.3
+ _ZTSN6libdnf16OptionStringListE@Base 0.35.3
+ _ZTSN6libdnf6OptionE@Base 0.35.3
+ _ZTVN6libdnf10OptionBoolE@Base 0.35.3
+ _ZTVN6libdnf10OptionEnumINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEE@Base 0.35.3
+ _ZTVN6libdnf10OptionPathE@Base 0.35.3
+ _ZTVN6libdnf12OptionStringE@Base 0.35.3
+ _ZTVN6libdnf13OptionSecondsE@Base 0.35.3
+ _ZTVN6libdnf16OptionStringListE@Base 0.35.3
+ _ZTVN6libdnf6OptionE@Base 0.35.3
+ glob_for_repofiles@Base 0.11.1
+ load_repo@Base 0.11.1
