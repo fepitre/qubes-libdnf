@@ -1,3 +1,9 @@
+libdnf (0.48.0-1) unstable; urgency=medium
+
+  * Update to libdnf-0.48.0
+
+ -- Frédéric Pierret (fepitre) <frederic.pierret@qubes-os.org>  Sun, 11 Oct 2020 12:30:22 +0200
+
 libdnf (0.35.3-1) unstable; urgency=medium
 
   * Initial commit
