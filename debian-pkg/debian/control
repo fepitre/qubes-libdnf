@@ -10,9 +10,9 @@ Build-Depends: debhelper (>= 9~),
  cmake (>= 2.8.5-1~),
  pkg-config,
  libglib2.0-dev (>= 2.50.3-2.1~),
- libsolv-dev (>= 0.7.14-2~),
- libsolvext-dev (>= 0.7.14-2~),
- libsolv-tools (>= 0.7.14-2~),
+ libsolv-dev (>= 0.7.14-1.1~),
+ libsolvext-dev (>= 0.7.14-1.1~),
+ libsolv-tools (>= 0.7.14-1.1~),
  librpm-dev (>= 4.14.2.1+dfsg1-1.1~),
  libzstd-dev,
  librepo-dev (>= 1.10.0-1~),
@@ -45,8 +45,8 @@ Architecture: any
 Multi-Arch: same
 Depends: ${misc:Depends},
  libdnf2 (= ${binary:Version}),
- libsolv-dev (>= 0.7.14-2~),
- libsolvext-dev (>= 0.7.14-2~),
+ libsolv-dev (>= 0.7.14-1.1~),
+ libsolvext-dev (>= 0.7.14-1.1~),
 Breaks: gir1.2-libdnf-1.0 (<< ${binary:Version})
 Description: libdnf - development files
  A library providing simplified C and Python APIs to libsolv.
