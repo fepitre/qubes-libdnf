@@ -1,3 +1,14 @@
+libdnf (0.48.0-2) unstable; urgency=medium
+
+  [ Frédéric Pierret (fepitre) ]
+  * Update to libdnf-0.48.0
+  * version 0.48.0-1
+
+  [ Marek Marczykowski-Górecki ]
+  * debian: adjust libsolv deps version
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sat, 17 Oct 2020 22:14:20 +0200
+
 libdnf (0.48.0-1) unstable; urgency=medium
 
   * Update to libdnf-0.48.0
