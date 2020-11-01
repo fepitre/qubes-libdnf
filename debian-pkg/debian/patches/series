@@ -7,3 +7,4 @@
 0007-000500_libdnf-dnf-context.cpp_support-debian-distros.patch
 0008-000800_tests_hawkey_test_goal.cpp_workaround-failure.patch
 0009-100000_libdnf_utils_smartcols_Cell.hpp_use-private-s.patch
+0001-test_sack-fix-number-of-arches-if-athlon-if-not-avai.patch
