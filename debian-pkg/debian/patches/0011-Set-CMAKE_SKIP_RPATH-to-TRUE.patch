@@ -1,0 +1,26 @@
+From 60a75d60f6b7706843a8ce3dbeb5b4e8d810b279 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Pierret=20=28fepitre=29?=
+ <frederic.pierret@qubes-os.org>
+Date: Tue, 24 Nov 2020 22:16:41 +0100
+Subject: [PATCH] Set CMAKE_SKIP_RPATH to TRUE
+
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6c96caed..508d30bd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -115,6 +115,8 @@ add_compile_options(-Wcast-align -Wno-uninitialized -Wredundant-decls -Wwrite-st
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu11 -Wmissing-prototypes -Waggregate-return -Wshadow -Werror=implicit-function-declaration")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wmissing-declarations")
+ 
++SET(CMAKE_SKIP_RPATH TRUE)
++
+ # apple: turn rpath off
+ set(CMAKE_MACOSX_RPATH 0)
+ 
+-- 
+2.26.2
+

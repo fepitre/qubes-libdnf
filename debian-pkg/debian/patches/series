@@ -8,3 +8,4 @@
 0008-Workaround-hawkey-test-failures-with-CK_FORK-no.patch
 0009-Use-private-scols_cell_get_alignment-with-older-libs.patch
 0010-test_sack-fix-number-of-arches-if-athlon-if-not-avai.patch
+0011-Set-CMAKE_SKIP_RPATH-to-TRUE.patch
