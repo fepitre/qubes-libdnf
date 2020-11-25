@@ -1,8 +1,7 @@
-From 02f66db51a3e9e058721dfcaea714de20bdb6a4f Mon Sep 17 00:00:00 2001
+From b6e037b94a81c4e665562b02bb7d5d9f822a776b Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
-Subject: [PATCH] 
- 000200_tests-hawkey-CMakeLists.txt_use-static-libcheck-and-add-LDFLAGS
+Subject: [PATCH] Use static libcheck version.
 
 Within Debian, only the static libcheck library is shipped. Use it correctly,
 since the static library requires additional private libraries and definitions.

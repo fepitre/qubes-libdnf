@@ -1,8 +1,7 @@
-From af55ca7fb2193fce2dcdb36efb98c1993f2c7cdb Mon Sep 17 00:00:00 2001
+From 6b18b70a22b6b2117471b050b4a0e30c4d7c5745 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
-Subject: [PATCH] 
- 000330_tests-hawkey-test_iutil.cpp_libdnf-dnf-sack.cpp_enable-rpmdb-in-homedir
+Subject: [PATCH] Tell libsolv to prefer rpmdb in home directory.
 
 The rpm package on Debian is patched to always use the RPMDB in a user's home
 directory. Libsolv is not patched in such a way. Since DNF is mixing librpm and

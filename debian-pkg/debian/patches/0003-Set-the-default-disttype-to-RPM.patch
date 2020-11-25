@@ -1,8 +1,7 @@
-From 858f1ef41e7e6927b5e6308659f0f0cac965294c Mon Sep 17 00:00:00 2001
+From 4b0488cb664315e5637cd2d7ab871f6fa4b34aeb Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
-Subject: [PATCH] 
- 000300_tests-hawkey-test_iutil.cpp_libdnf-dnf-sack.cpp_set-default-disttype-to-DISTTYPE_RPM
+Subject: [PATCH] Set the default disttype to RPM.
 
 On "foreign" systems, including Debian, libsolv tries to be smart and default
 to the native packaging system type. We need to explicitly override it to use

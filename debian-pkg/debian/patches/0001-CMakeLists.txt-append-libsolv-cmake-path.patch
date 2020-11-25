@@ -1,4 +1,4 @@
-From d0c07d97dba24d25e41d60e6688f2245522f17f3 Mon Sep 17 00:00:00 2001
+From 6cdc6794ea37f89c853917f4efd3dc2711237128 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
 Subject: [PATCH] CMakeLists.txt: append libsolv cmake path

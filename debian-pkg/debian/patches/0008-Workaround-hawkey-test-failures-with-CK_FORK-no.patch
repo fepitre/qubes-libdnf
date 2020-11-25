@@ -1,8 +1,7 @@
-From c26801ec88f8d3736cf55b8b7853374dc7ae786b Mon Sep 17 00:00:00 2001
+From d4469be92f4d9fdafa4a24f1185e5c7c6be7f8d3 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
-Subject: [PATCH] 
- 000800_tests_hawkey_test_goal.cpp_workaround-failure-with-CK_FORK-no
+Subject: [PATCH] Workaround hawkey test failures with CK_FORK=no.
 
 For a description of what is happening here and a rational of why this might
 just be okay for us, see the source code comment.
@@ -11,10 +10,10 @@ just be okay for us, see the source code comment.
  1 file changed, 21 insertions(+)
 
 diff --git a/tests/hawkey/test_goal.cpp b/tests/hawkey/test_goal.cpp
-index c88901a9..f01c214f 100644
+index cca12775..0c4db99c 100644
 --- a/tests/hawkey/test_goal.cpp
 +++ b/tests/hawkey/test_goal.cpp
-@@ -864,6 +864,27 @@ START_TEST(test_goal_upgrade_disabled_repo)
+@@ -950,6 +950,27 @@ START_TEST(test_goal_upgrade_disabled_repo)
      auto pool = dnf_sack_get_pool(test_globals.sack);
      HyGoal goal = hy_goal_create(sack);
  

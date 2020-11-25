@@ -1,8 +1,8 @@
-From 50b3db61afb7c862258bb3a83a733b5e3295118d Mon Sep 17 00:00:00 2001
+From 9cd861edd26ba472a6172b758171a2e1bced721a Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
-Subject: [PATCH] 
- 000400_libdnf-dnf-sack.cpp_dnf-context.cpp_use-rpmdb-in-homedir
+Subject: [PATCH] Add rpmdb in home directory to checksum and DNF context setup
+ function.
 
 The rpm package on Debian is patched to always use the RPMDB in a user's home
 directory.
@@ -15,10 +15,10 @@ user's home directory.
  2 files changed, 29 insertions(+), 6 deletions(-)
 
 diff --git a/libdnf/dnf-context.cpp b/libdnf/dnf-context.cpp
-index 91df0bd9..32403fc2 100644
+index 4adf58b2..9f79749a 100644
 --- a/libdnf/dnf-context.cpp
 +++ b/libdnf/dnf-context.cpp
-@@ -2196,12 +2196,33 @@ dnf_context_setup(DnfContext *context,
+@@ -2194,12 +2194,33 @@ dnf_context_setup(DnfContext *context,
  
      /* setup a file monitor on the rpmdb, if we're operating on the native / */
      if (g_strcmp0(priv->install_root, "/") == 0) {

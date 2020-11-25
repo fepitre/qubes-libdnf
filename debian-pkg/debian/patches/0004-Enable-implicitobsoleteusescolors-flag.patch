@@ -1,8 +1,7 @@
-From 4f21fb8cfedca9bc23ffbe935718e1cc51b1cc79 Mon Sep 17 00:00:00 2001
+From 01203a36470cfd6c4813717349c150085e518c47 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
-Subject: [PATCH] 
- 000320_tests-hawkey-test_iutil.cpp_libdnf-dnf-sack.cpp_enable-implicitobsoleteusescolors
+Subject: [PATCH] Enable implicitobsoleteusescolors flag.
 
 This flag is normally enabled by default in libsolv if compiled on Fedora or
 Mageia systems, but disabled for all others. Since we explicitly want to
