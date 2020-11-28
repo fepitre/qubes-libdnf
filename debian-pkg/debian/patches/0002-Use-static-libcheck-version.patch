@@ -1,4 +1,4 @@
-From b6e037b94a81c4e665562b02bb7d5d9f822a776b Mon Sep 17 00:00:00 2001
+From b9d5eab53ab07340c14d0e80ea00b8024395594b Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
 Subject: [PATCH] Use static libcheck version.
@@ -6,18 +6,17 @@ Subject: [PATCH] Use static libcheck version.
 Within Debian, only the static libcheck library is shipped. Use it correctly,
 since the static library requires additional private libraries and definitions.
 ---
- tests/hawkey/CMakeLists.txt | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ tests/hawkey/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/tests/hawkey/CMakeLists.txt b/tests/hawkey/CMakeLists.txt
-index c2ca446a..b4acd57b 100644
+index 29402d63..601bb4bc 100644
 --- a/tests/hawkey/CMakeLists.txt
 +++ b/tests/hawkey/CMakeLists.txt
-@@ -28,7 +28,8 @@ add_executable(test_hawkey_main ${hawkeytest_SRCS})
- set_target_properties(test_hawkey_main PROPERTIES COMPILE_FLAGS -fPIC)
+@@ -29,6 +29,8 @@ set_target_properties(test_hawkey_main PROPERTIES COMPILE_FLAGS -fPIC)
  target_link_libraries(test_hawkey_main
      libdnf
--    ${CHECK_LIBRARIES}
+     ${CHECK_LDFLAGS}
 +    ${CHECK_STATIC_LIBRARIES}
 +    ${CHECK_STATIC_LDFLAGS}
      ${SOLV_LIBRARY}

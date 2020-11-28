@@ -1,4 +1,4 @@
-From 4b0488cb664315e5637cd2d7ab871f6fa4b34aeb Mon Sep 17 00:00:00 2001
+From c2f890e096b2215a364660ecaf8bdeed42d1d040 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
 Subject: [PATCH] Set the default disttype to RPM.
@@ -12,10 +12,10 @@ RPM for dnf to work.
  2 files changed, 8 insertions(+)
 
 diff --git a/libdnf/dnf-sack.cpp b/libdnf/dnf-sack.cpp
-index 025988b4..cacf9fff 100644
+index 9fd2c72d..38dcb9ec 100644
 --- a/libdnf/dnf-sack.cpp
 +++ b/libdnf/dnf-sack.cpp
-@@ -185,6 +185,7 @@ dnf_sack_init(DnfSack *sack)
+@@ -186,6 +186,7 @@ dnf_sack_init(DnfSack *sack)
      DnfSackPrivate *priv = GET_PRIVATE(sack);
      priv->pool = pool_create();
      pool_set_flag(priv->pool, POOL_FLAG_WHATPROVIDESWITHDISABLED, 1);
