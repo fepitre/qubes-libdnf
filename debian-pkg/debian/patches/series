@@ -10,3 +10,4 @@
 0010-test_sack-fix-number-of-arches-if-athlon-if-not-avai.patch
 0011-Set-CMAKE_SKIP_RPATH-to-TRUE.patch
 0012-data-workaround-for-hardcoded-absolute-path-data-in-.patch
+0013-python-tests-fix-locale-issues.patch
