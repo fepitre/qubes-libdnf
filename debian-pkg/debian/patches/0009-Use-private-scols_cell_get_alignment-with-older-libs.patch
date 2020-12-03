@@ -1,8 +1,8 @@
-From 004c043c931d10122ad2c4fe073f6920cd3c2970 Mon Sep 17 00:00:00 2001
+From 0957ec9fe8659964391e2c4dbe5da3349c1c0687 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
-Subject: [PATCH] 
- 100000_libdnf_utils_smartcols_Cell.hpp_use-private-scols_cell_get_alignment
+Subject: [PATCH] Use private scols_cell_get_alignment() with older
+ libsmartcols
 
 Stretch's version of libsmartcols includes the (binary) symbol, but does not
 export it via its API, probably to make the intermediate release

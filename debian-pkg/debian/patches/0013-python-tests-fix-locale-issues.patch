@@ -1,0 +1,46 @@
+From bb2cf334db621ed48adf65ebe8463b3145125b7e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Pierret=20=28fepitre=29?=
+ <frederic.pierret@qubes-os.org>
+Date: Wed, 2 Dec 2020 11:30:10 +0100
+Subject: [PATCH] python tests: fix locale issues
+
+It has been observed that manipulating locales in Debian
+environement, tests are failing.
+
+======================================================================
+ERROR: test_custom_querying (tests.test_reldep.Reldep)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/reprotest.wOQ8sL/build-experiment-1/build-experiment-1/python/hawkey/tests/tests/test_reldep.py", line 78, in test_custom_querying
+    reldep = hawkey.Reldep(self.sack, u"\u0159 >= 3")
+_hawkey.ValueException: Wrong reldep format: \u0159 >= 3
+---
+ python/hawkey/tests/tests/__init__.py | 1 +
+ python/hawkey/tests/tests/base.py     | 5 +++++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/python/hawkey/tests/tests/__init__.py b/python/hawkey/tests/tests/__init__.py
+index e69de29b..8b137891 100644
+--- a/python/hawkey/tests/tests/__init__.py
++++ b/python/hawkey/tests/tests/__init__.py
+@@ -0,0 +1 @@
++
+diff --git a/python/hawkey/tests/tests/base.py b/python/hawkey/tests/tests/base.py
+index 4d5937b2..e46a1d66 100644
+--- a/python/hawkey/tests/tests/base.py
++++ b/python/hawkey/tests/tests/base.py
+@@ -33,6 +33,11 @@ if cachedir is None:
+     cachedir = tempfile.mkdtemp(dir=os.path.dirname(hawkey.test.UNITTEST_DIR),
+                                 prefix='pyhawkey')
+ 
++# run tests with C locales
++os.environ["LC_ALL"] = "C"
++os.environ["LANG"] = "C.UTF-8"
++os.environ["LANGUAGE"] = "en_US:en"
++
+ class TestCase(unittest.TestCase):
+     repo_dir = os.path.normpath(os.path.join(__file__, "../../../../../data/tests/hawkey/"))
+ 
+-- 
+2.26.2
+

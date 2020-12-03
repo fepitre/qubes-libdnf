@@ -1,8 +1,7 @@
-From 4f21fb8cfedca9bc23ffbe935718e1cc51b1cc79 Mon Sep 17 00:00:00 2001
+From 237579203a15caee49379311dc45e0abfed97de5 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
-Subject: [PATCH] 
- 000320_tests-hawkey-test_iutil.cpp_libdnf-dnf-sack.cpp_enable-implicitobsoleteusescolors
+Subject: [PATCH] Enable implicitobsoleteusescolors flag.
 
 This flag is normally enabled by default in libsolv if compiled on Fedora or
 Mageia systems, but disabled for all others. Since we explicitly want to
@@ -14,10 +13,10 @@ correct resolution.
  2 files changed, 10 insertions(+)
 
 diff --git a/libdnf/dnf-sack.cpp b/libdnf/dnf-sack.cpp
-index cacf9fff..0162e04b 100644
+index 38dcb9ec..c994b2b2 100644
 --- a/libdnf/dnf-sack.cpp
 +++ b/libdnf/dnf-sack.cpp
-@@ -186,6 +186,7 @@ dnf_sack_init(DnfSack *sack)
+@@ -187,6 +187,7 @@ dnf_sack_init(DnfSack *sack)
      priv->pool = pool_create();
      pool_set_flag(priv->pool, POOL_FLAG_WHATPROVIDESWITHDISABLED, 1);
      pool_setdisttype(priv->pool, DISTTYPE_RPM);

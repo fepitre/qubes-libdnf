@@ -1,3 +1,18 @@
+libdnf (0.55.0-1) unstable; urgency=medium
+
+  * Add reproducible=+fixfilepath flag
+  * Make lintian happier
+  * Reformat patches with original author's description
+  * Update to libdnf-0.55.0
+
+ -- Frédéric Pierret (fepitre) <frederic.pierret@qubes-os.org>  Sat, 28 Nov 2020 10:01:01 +0100
+
+libdnf (0.54.2-1) unstable; urgency=medium
+
+  * Update to libdnf-0.54.2
+
+ -- Frédéric Pierret (fepitre) <frederic.pierret@qubes-os.org>  Sun, 01 Nov 2020 22:19:21 +0100
+
 libdnf (0.48.0-2) unstable; urgency=medium
 
   [ Frédéric Pierret (fepitre) ]

@@ -1,0 +1,47 @@
+From 858a6257d9b31fd4c21a6baa9176e31eb2722742 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Pierret=20=28fepitre=29?=
+ <frederic.pierret@qubes-os.org>
+Date: Sun, 1 Nov 2020 13:32:10 +0100
+Subject: [PATCH] test_sack: fix number of arches if "athlon" if not available
+
+It's the case for Debian and openSUSE
+---
+ tests/hawkey/test_sack.cpp | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/tests/hawkey/test_sack.cpp b/tests/hawkey/test_sack.cpp
+index 5eab83b3..e528cd94 100644
+--- a/tests/hawkey/test_sack.cpp
++++ b/tests/hawkey/test_sack.cpp
+@@ -83,14 +83,25 @@ START_TEST(test_list_arches)
+     const char ** arches = dnf_sack_list_arches(sack);
+ 
+     /* noarch, x86_64, athlon, i686, i586, i486, i386 */
+-    fail_unless(g_strv_length((gchar**)arches) == 7);
++    fail_unless(g_strv_length((gchar**)arches) >= 6 && g_strv_length((gchar**)arches) <= 7);
+ 
+-    if (strcmp(arches[2], "athlon") == 0) {
++    if (g_strv_length((gchar**)arches) == 7) {
+         // Fedora, Mageia
++        ck_assert_str_eq(arches[0], "noarch");
++        ck_assert_str_eq(arches[1], "x86_64");
++        ck_assert_str_eq(arches[2], "athlon");
+         ck_assert_str_eq(arches[3], "i686");
++        ck_assert_str_eq(arches[4], "i586");
++        ck_assert_str_eq(arches[5], "i486");
++        ck_assert_str_eq(arches[6], "i386");
+     } else {
+-        // openSUSE - "athlon" is not available
++        // openSUSE, Debian - "athlon" is not available
++        ck_assert_str_eq(arches[0], "noarch");
++        ck_assert_str_eq(arches[1], "x86_64");
++        ck_assert_str_eq(arches[2], "i686");
+         ck_assert_str_eq(arches[3], "i586");
++        ck_assert_str_eq(arches[4], "i486");
++        ck_assert_str_eq(arches[5], "i386");
+     }
+ 
+     g_free(arches);
+-- 
+2.26.2
+

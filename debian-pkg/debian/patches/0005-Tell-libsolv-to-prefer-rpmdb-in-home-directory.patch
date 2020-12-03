@@ -1,8 +1,7 @@
-From af55ca7fb2193fce2dcdb36efb98c1993f2c7cdb Mon Sep 17 00:00:00 2001
+From e899b8821cfe6b1fe03d3073c455e0fd352faca3 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
-Subject: [PATCH] 
- 000330_tests-hawkey-test_iutil.cpp_libdnf-dnf-sack.cpp_enable-rpmdb-in-homedir
+Subject: [PATCH] Tell libsolv to prefer rpmdb in home directory.
 
 The rpm package on Debian is patched to always use the RPMDB in a user's home
 directory. Libsolv is not patched in such a way. Since DNF is mixing librpm and
@@ -14,10 +13,10 @@ Tell libsolv to prefer the rpmdb in the user's home directory.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/libdnf/dnf-sack.cpp b/libdnf/dnf-sack.cpp
-index 0162e04b..b12ee6df 100644
+index c994b2b2..d1338fbf 100644
 --- a/libdnf/dnf-sack.cpp
 +++ b/libdnf/dnf-sack.cpp
-@@ -1685,7 +1685,7 @@ dnf_sack_load_system_repo(DnfSack *sack, HyRepo a_hrepo, int flags, GError **err
+@@ -1727,7 +1727,7 @@ dnf_sack_load_system_repo(DnfSack *sack, HyRepo a_hrepo, int flags, GError **err
      repo = repo_create(pool, HY_SYSTEM_REPO_NAME);
  
      g_debug("fetching rpmdb");
