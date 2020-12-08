@@ -1,3 +1,10 @@
+libdnf (0.55.0-2) unstable; urgency=medium
+
+  [ Frédéric Pierret (fepitre) ]
+  * 
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Tue, 08 Dec 2020 02:58:47 +0100
+
 libdnf (0.55.0-1) unstable; urgency=medium
 
   * Add reproducible=+fixfilepath flag
