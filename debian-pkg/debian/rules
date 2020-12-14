@@ -39,7 +39,7 @@ override_dh_auto_clean:
 
 override_dh_auto_test:
 	mkdir '$(CURDIR)/debian/tests-home'
-	HOME='$(CURDIR)/debian/tests-home' dh_auto_test --builddirectory=build -- ARGS='-V'
+	LC_ALL=C HOME='$(CURDIR)/debian/tests-home' dh_auto_test --builddirectory=build -- ARGS='-V'
 
 override_dh_missing:
 	dh_missing --fail-missing
