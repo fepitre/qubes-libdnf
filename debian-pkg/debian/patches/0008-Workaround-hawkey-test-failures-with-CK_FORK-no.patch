@@ -1,4 +1,4 @@
-From e40bb378005a81230f645699829e21fc58ce1613 Mon Sep 17 00:00:00 2001
+From ac422a0b38f9396483cd58113074c6db2795e276 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
 Subject: [PATCH] Workaround hawkey test failures with CK_FORK=no.

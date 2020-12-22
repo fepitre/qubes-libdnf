@@ -1,4 +1,4 @@
-From 78c26ff3ee07e4b0284a3ab4c9bf17583d62a97f Mon Sep 17 00:00:00 2001
+From 90643bd524891456e546fa08836eb61eb99b57a4 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
 Subject: [PATCH] CMakeLists.txt: append libsolv cmake path
@@ -10,7 +10,7 @@ in ${CMAKE_INSTALL_PREFIX}/share/cmake/libsolv.
  1 file changed, 1 insertion(+)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 40d64fc4..6c96caed 100644
+index 2dd55c57..00ab52f7 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -46,6 +46,7 @@ if(APPLE)

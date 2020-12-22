@@ -1,4 +1,4 @@
-From 1ebd6f31e19c59a85867e8b9dd08742decf385e1 Mon Sep 17 00:00:00 2001
+From 9c8e0cb52813ed5c8bd713ecda40ccb5e648b81a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Pierret=20=28fepitre=29?=
  <frederic.pierret@qubes-os.org>
 Date: Sat, 28 Nov 2020 23:00:31 +0100
@@ -8,11 +8,11 @@ Subject: [PATCH] data: workaround for hardcoded absolute path data in
 We use clean env for each build to use /tmp as location. This is
 a temporary solution until upstream/we found a better way for that.
 ---
- CMakeLists.txt | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 508d30bd..35f911e1 100644
+index b3fc5cda..70804347 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -134,7 +134,7 @@ add_definitions(-DG_LOG_DOMAIN=\\"libdnf\\")
@@ -24,11 +24,10 @@ index 508d30bd..35f911e1 100644
  
  # librhsm
  if(ENABLE_RHSM_SUPPORT)
-@@ -186,3 +186,5 @@ add_subdirectory(tests)
- if(WITH_BINDINGS)
-     add_subdirectory(python/hawkey)
- endif()
-+
+@@ -182,3 +182,4 @@ endif()
+ 
+ 
+ add_subdirectory(etc)
 +file(COPY data DESTINATION /tmp)
 -- 
 2.26.2

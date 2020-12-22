@@ -1,4 +1,4 @@
-From aadc535e2ee5107f51273b11a2f44d8ac112d17d Mon Sep 17 00:00:00 2001
+From 2d5455b0a99029ea8881fecdc969458362456949 Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
 Subject: [PATCH] Add rpmdb in home directory to checksum and DNF context setup
@@ -15,10 +15,10 @@ user's home directory.
  2 files changed, 29 insertions(+), 6 deletions(-)
 
 diff --git a/libdnf/dnf-context.cpp b/libdnf/dnf-context.cpp
-index d119e7de..0a343326 100644
+index bc4a15b6..598bff9c 100644
 --- a/libdnf/dnf-context.cpp
 +++ b/libdnf/dnf-context.cpp
-@@ -2201,12 +2201,33 @@ dnf_context_setup(DnfContext *context,
+@@ -2234,12 +2234,33 @@ dnf_context_setup(DnfContext *context,
  
      /* setup a file monitor on the rpmdb, if we're operating on the native / */
      if (g_strcmp0(priv->install_root, "/") == 0) {

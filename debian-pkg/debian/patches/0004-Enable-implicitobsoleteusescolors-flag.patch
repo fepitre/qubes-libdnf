@@ -1,4 +1,4 @@
-From 237579203a15caee49379311dc45e0abfed97de5 Mon Sep 17 00:00:00 2001
+From 7cba1b05a5647ce0e3d8aa763705fd21e9f4e79f Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
 Subject: [PATCH] Enable implicitobsoleteusescolors flag.
@@ -13,7 +13,7 @@ correct resolution.
  2 files changed, 10 insertions(+)
 
 diff --git a/libdnf/dnf-sack.cpp b/libdnf/dnf-sack.cpp
-index 38dcb9ec..c994b2b2 100644
+index 36f4a92b..2384fccb 100644
 --- a/libdnf/dnf-sack.cpp
 +++ b/libdnf/dnf-sack.cpp
 @@ -187,6 +187,7 @@ dnf_sack_init(DnfSack *sack)

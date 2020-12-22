@@ -1,4 +1,4 @@
-From b7107f72ea041da04ecc5f49a5a01c3821fa4a06 Mon Sep 17 00:00:00 2001
+From b1aef4a9d4d5c51fc1d92d12fcc4ddd6fa94d31f Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
 Subject: [PATCH] Support Debian releases without explicit version.
@@ -15,10 +15,10 @@ Fake the version in such a case.
  1 file changed, 39 insertions(+), 3 deletions(-)
 
 diff --git a/libdnf/dnf-context.cpp b/libdnf/dnf-context.cpp
-index 0a343326..94b16107 100644
+index 598bff9c..aaa796db 100644
 --- a/libdnf/dnf-context.cpp
 +++ b/libdnf/dnf-context.cpp
-@@ -1636,9 +1636,45 @@ dnf_context_set_os_release(DnfContext *context, GError **error) try
+@@ -1666,9 +1666,45 @@ dnf_context_set_os_release(DnfContext *context, GError **error) try
                                                   "os-release",
                                                   "VERSION_ID",
                                                   error);

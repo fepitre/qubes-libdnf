@@ -1,4 +1,4 @@
-From b9d5eab53ab07340c14d0e80ea00b8024395594b Mon Sep 17 00:00:00 2001
+From 1b86fcaf2966f098256f6bb044dfa5a5a43ed96b Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
 Subject: [PATCH] Use static libcheck version.

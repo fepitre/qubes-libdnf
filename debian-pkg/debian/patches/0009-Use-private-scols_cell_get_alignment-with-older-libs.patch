@@ -1,4 +1,4 @@
-From 0957ec9fe8659964391e2c4dbe5da3349c1c0687 Mon Sep 17 00:00:00 2001
+From c98b33ca589a1d5c609b1c2ea6b7d1f75844664b Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 18:30:16 +0200
 Subject: [PATCH] Use private scols_cell_get_alignment() with older
