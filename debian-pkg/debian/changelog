@@ -1,3 +1,10 @@
+libdnf (0.55.2-1) unstable; urgency=medium
+
+  * Prevent failing tests when LC_ALL=zh_CN
+  * Update to libdnf-0.55.2
+
+ -- Frédéric Pierret (fepitre) <frederic.pierret@qubes-os.org>  Tue, 22 Dec 2020 14:40:10 +0100
+
 libdnf (0.55.0-2) unstable; urgency=medium
 
   [ Frédéric Pierret (fepitre) ]
